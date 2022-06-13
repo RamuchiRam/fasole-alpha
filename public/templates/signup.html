@@ -1,0 +1,49 @@
+{{define "signup"}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../public/static/fonts/Helvetica/" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=HelveticaNeueCyr&display=swap" rel="stylesheet" />
+        <link href="../public/static/css/main.css" rel="stylesheet" />
+        <title>Регистрация</title>
+    </head>
+    <body>
+        <div class="loginpage">
+            <div class="fglogo">
+                <div class="fglogorct"></div>
+                <div class="fglogoicon"></div>
+            </div>
+            <div class="footer">
+                <div class="footerrct"></div>
+                <div class="footerlogo"></div>
+                <span class="copyright">© Фа.Соль, 2021</span>
+                <span class="github">Мы на GitHub</span>
+                <span class="about">О нас</span>
+            </div>
+            <form class="form" id="loginForm" name="signUpForm" action="/signup" method="post" >
+                <div class="formrct"></div>
+                <span class="formtitle">Зарегистрироваться</span>
+                <div class="email"></div>
+                <div class="login"></div>
+                <input class="emailtxt" type="email" id="email" name="email" required placeholder="E-Mail">
+                <input class="logintxt" type="text" id="login" name="login" required placeholder="Логин">
+                <div class="secondname"></div>
+                <div class="firstname"></div>
+                <input class="secondnametxt" type="surname" id="surname" name="surname" required placeholder="Фамилия">
+                <input class="firstnametxt" type="name" id="name" name="name" required placeholder="Имя">
+                <div class="password"></div>
+                <input class="passwordtxt" type="password" id="password" name="password" required placeholder="Пароль">
+                <div class="repeatpassword"></div>
+                <input class="repeatpasswordtxt" type="password" id="password2" name="password2" required placeholder="Повторите пароль">
+                <div class="registerbutton"></div>
+                <button class="registerbuttontxt" type="submit" name="submitBtn">Зарегистрироваться</button>
+            </form>
+            {{if . }}
+            <div>
+                {{.Message}}
+            </div>
+            {{end}}
+        </div>
+    </body>
+</html>
+{{end}}

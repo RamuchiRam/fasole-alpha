@@ -1,0 +1,44 @@
+{{define "login"}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../public/static/fonts/Helvetica/" rel="stylesheet" />
+        <link href="../public/static/fonts/Helvetica" rel="stylesheet" />
+        <link href="../public/static/css/main.css" rel="stylesheet" />
+        <title>Вход</title>
+    </head>
+    <body>
+        <div class="loginpage">
+            <div class="fglogo">
+                <div class="fglogorct"></div>
+                <div class="fglogoicon"></div>
+            </div>
+            <div class="footer">
+                <div class="footerrct"></div>
+                <div class="footerlogo"></div>
+                <span class="copyright">© Фа.Соль, 2021</span>
+                <span class="github">Мы на GitHub</span>
+                <span class="about">О нас</span>
+            </div>
+            <form class="form" id="loginForm" name="loginForm" action="/login" method="post" class="mt-4">
+                <div class="enterformrct"></div>
+                <span class="formtitle">Вход</span>
+                <div class="login"></div>
+                <input class="logintxt" type="login" id="login" name="login" autocomplete="on" placeholder="Логин">
+                <div class="enterformpassword"></div>
+                <input class="enterformpasswordtxt" type="password" id="password" name="password" autocomplete="on" placeholder="Пароль">
+                <div class="loginbutton"></div>
+                <button class="loginbuttontxt" type="submit" name="submitBtn">Войти</button>
+            </form>
+            <a class="regbutton" href="/signup">
+                <div class="regbuttonrct"></div>
+                <a class="regbuttontxt" href="/signup">Регистрация</a>
+            {{if . }}
+            <div>
+                {{.Message}}
+            </div>
+            {{end}}
+        </div>
+    </body>
+</html>
+{{end}}
