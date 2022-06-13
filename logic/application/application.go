@@ -62,6 +62,12 @@ func (a app) Routes(r *httprouter.Router) {
 	r.GET("/about", a.authorized(a.AboutPage))
 	r.GET("/links", a.authorized(a.LinksPage))
 	r.GET("/keyscourse", a.authorized(a.KeyscoursePage))
+	// <summary> СТРАНИЦЫ ТАБОВ
+	r.GET("/tabs", a.authorized(a.MainTabsPage))
+	r.GET("/closer", a.authorized(a.TabsCloserPage))
+	r.GET("/kukushka", a.authorized(a.TabsKukushkaPage))
+	r.GET("/lesnik", a.authorized(a.TabsLesnikPage))
+	// </summary>
 	r.GET("/login", func(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		a.LoginPage(rw, "")
 	})
@@ -100,6 +106,16 @@ func (a app) Login(rw http.ResponseWriter, r *http.Request, p httprouter.Params)
 	http.Redirect(rw, r, "/", http.StatusSeeOther)
 }
 
+func (a app) Logout(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	for _, v := range r.Cookies() {
+		c := http.Cookie{
+			Name:   v.Name,
+			MaxAge: -1}
+		http.SetCookie(rw, &c)
+	}
+	http.Redirect(rw, r, "/login", http.StatusSeeOther)
+}
+
 func (a app) Signup(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	login := strings.TrimSpace(r.FormValue("login"))
 	email := strings.TrimSpace(r.FormValue("email"))
@@ -129,16 +145,6 @@ func (a app) Signup(rw http.ResponseWriter, r *http.Request, p httprouter.Params
 	http.Redirect(rw, r, "/", http.StatusSeeOther)
 }
 
-func (a app) Logout(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	for _, v := range r.Cookies() {
-		c := http.Cookie{
-			Name:   v.Name,
-			MaxAge: -1}
-		http.SetCookie(rw, &c)
-	}
-	http.Redirect(rw, r, "/login", http.StatusSeeOther)
-}
-
 func (a app) LoginPage(rw http.ResponseWriter, message string) {
 	lp := filepath.Join("public", "templates", "login.html")
 	tmpl, err := template.ParseFiles(lp)
@@ -157,20 +163,6 @@ func (a app) LoginPage(rw http.ResponseWriter, message string) {
 	}
 }
 
-func (a app) StartPage(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	lp := filepath.Join("public", "templates", "index.html")
-	tmpl, err := template.ParseFiles(lp)
-	if err != nil {
-		http.Error(rw, err.Error(), http.StatusBadRequest)
-		return
-	}
-	err = tmpl.ExecuteTemplate(rw, "index", p)
-	if err != nil {
-		http.Error(rw, err.Error(), http.StatusBadRequest)
-		return
-	}
-}
-
 func (a app) SignupPage(rw http.ResponseWriter, message string) {
 	sp := filepath.Join("public", "templates", "signup.html")
 	tmpl, err := template.ParseFiles(sp)
@@ -183,6 +175,20 @@ func (a app) SignupPage(rw http.ResponseWriter, message string) {
 	}
 	data := answer{message}
 	err = tmpl.ExecuteTemplate(rw, "signup", data)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+}
+
+func (a app) StartPage(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	lp := filepath.Join("public", "templates", "index.html")
+	tmpl, err := template.ParseFiles(lp)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+	err = tmpl.ExecuteTemplate(rw, "index", p)
 	if err != nil {
 		http.Error(rw, err.Error(), http.StatusBadRequest)
 		return
@@ -239,6 +245,62 @@ func (a app) KeyscoursePage(rw http.ResponseWriter, r *http.Request, p httproute
 		return
 	}
 	err = tmpl.ExecuteTemplate(rw, "keyscourse", p)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+}
+
+func (a app) MainTabsPage(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	lp := filepath.Join("public", "templates", "tabs.html")
+	tmpl, err := template.ParseFiles(lp)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+	err = tmpl.ExecuteTemplate(rw, "tabs", p)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+}
+
+func (a app) TabsLesnikPage(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	lp := filepath.Join("public", "templates", "lesnik.html")
+	tmpl, err := template.ParseFiles(lp)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+	err = tmpl.ExecuteTemplate(rw, "lesnik", p)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+}
+
+func (a app) TabsCloserPage(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	lp := filepath.Join("public", "templates", "closer.html")
+	tmpl, err := template.ParseFiles(lp)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+	err = tmpl.ExecuteTemplate(rw, "closer", p)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+}
+
+func (a app) TabsKukushkaPage(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	lp := filepath.Join("public", "templates", "kukushka.html")
+	tmpl, err := template.ParseFiles(lp)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+	err = tmpl.ExecuteTemplate(rw, "kukushka", p)
 	if err != nil {
 		http.Error(rw, err.Error(), http.StatusBadRequest)
 		return

@@ -9,7 +9,7 @@ import (
 )
 
 func InitDBConn(ctx context.Context) (dbpool *pgxpool.Pool, err error) {
-	url := "postgres://postgres:gd2447987@localhost:5432/Fasole?sslmode=disable"
+	url := "postgres://postgres:PASSWORD@localhost:5432/Fasole?sslmode=disable"
 	cfg, err := pgxpool.ParseConfig(url)
 	if err != nil {
 		err = fmt.Errorf("failed to parse pg config: %w", err)
