@@ -194,7 +194,7 @@ body {
   color: rgba(0,0,0,1);
   position: absolute;
   top: 45px;
-  left: 178px;
+  left: 299px;
   font-family: Antipasto Pro;
   font-weight: Regular;
   font-size: 36px;
@@ -208,7 +208,7 @@ body {
   color: rgba(0,0,0,1);
   position: absolute;
   top: 45px;
-  left: 348px;
+  left: 469px;
   font-family: Antipasto Pro;
   font-weight: Regular;
   font-size: 36px;
@@ -222,7 +222,7 @@ body {
   color: rgba(0,0,0,1);
   position: absolute;
   top: 45px;
-  left: 701px;
+  left: 822px;
   font-family: Antipasto Pro;
   font-weight: Regular;
   font-size: 36px;
@@ -236,7 +236,7 @@ body {
   color: rgba(0,0,0,1);
   position: absolute;
   top: 45px;
-  left: 1038px;
+  left: 1159px;
   font-family: Antipasto Pro;
   font-weight: Regular;
   font-size: 36px;
@@ -250,7 +250,7 @@ body {
   color: rgba(0,0,0,1);
   position: absolute;
   top: 45px;
-  left: 489px;
+  left: 610px;
   font-family: Antipasto Pro;
   font-weight: Regular;
   font-size: 36px;
@@ -366,7 +366,7 @@ body {
   color: rgba(0,0,0,1);
   position: absolute;
   top: 47px;
-  left: 1535px;
+  left: 1529px;
   font-family: Antipasto Pro;
   font-weight: Regular;
   font-size: 30px;
@@ -499,7 +499,7 @@ body {
   overflow: hidden;
   cursor: pointer;
 }
-.gsbrct {
+.gsbrct::before {
   width: 286px;
   height: 78px;
   background: rgba(245,245,245,1);
@@ -514,8 +514,9 @@ body {
   border-bottom-right-radius: 20px;
   overflow: hidden;
   transition: 0.35s;
+  content: attr(text);
 }
-.gsbrct:hover {
+.gsbrct:hover::before {
   width: 286px;
   height: 78px;
   background: rgba(196,196,196,1);
@@ -529,7 +530,9 @@ body {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow: hidden;
+  content: attr(hover-text);
 }
+
 .gsbtxt {
   width: 124px;
   color: rgba(0,0,0,1);
@@ -844,7 +847,6 @@ body {
   top: 68px;
   left: 0px;
   overflow: hidden;
-  cursor: pointer;
 }
 .egbrct {
   width: 446px;
@@ -864,7 +866,7 @@ body {
   border-radius: 20px;
   transition: 0.35s;
 }
-.egbrct:hover {
+/*.egbrct:hover {
   width: 446px;
   height: 286px;
   background: rgba(221,221,221,1);
@@ -880,7 +882,7 @@ body {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 20px;
-}
+}*/
 .egbicon {
   width: 175px;
   height: 175px;
@@ -893,6 +895,7 @@ body {
   top: 55px;
   left: 253px;
   overflow: hidden;
+  filter: grayscale();
 }
 .egbtitle {
   width: 219px;
@@ -931,7 +934,7 @@ body {
   text-align: left;
 }
 .egbw {
-  width: 88px;
+  width: 207px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 240px;
@@ -953,7 +956,6 @@ body {
   top: 68px;
   left: 475px;
   overflow: hidden;
-  cursor: pointer;
 }
 .agrct {
   width: 446px;
@@ -973,7 +975,7 @@ body {
   border-radius: 20px;
   transition: 0.35s;
 }
-.agrct:hover {
+/*.agrct:hover {
   width: 446px;
   height: 286px;
   background: rgba(221,221,221,1);
@@ -989,7 +991,7 @@ body {
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 20px;
-}
+}*/
 .agicon {
   width: 170px;
   height: 170px;
@@ -1002,6 +1004,7 @@ body {
   top: 58px;
   left: 259px;
   overflow: hidden;
+  filter: grayscale();
 }
 .agdur {
   width: 150px;
@@ -1016,7 +1019,7 @@ body {
   text-align: left;
 }
 .agw {
-  width: 88px;
+  width: 207px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 240px;
@@ -1523,6 +1526,7 @@ body {
   font-size: 24px;
   opacity: 1;
   text-align: left;
+  text-decoration: none;
 }
 .peabout {
   width: 59px;
@@ -1535,6 +1539,7 @@ body {
   font-size: 24px;
   opacity: 1;
   text-align: left;
+  text-decoration: none;
 }
 /*-----------------------------------------------------
 
@@ -1651,6 +1656,7 @@ Register/login page
   opacity: 1;
   text-align: left;
   cursor: pointer;
+  text-decoration: none;
 }
 .about {
   width: 59px;
@@ -1664,6 +1670,7 @@ Register/login page
   opacity: 1;
   text-align: left;
   cursor: pointer;
+  text-decoration: none;
 }
 .form {
   width: 580px;
@@ -2097,7 +2104,7 @@ Register/login page
   top: 788px;
   left: 855px;
   font-family: Helvetica;
-  font-weight: Light;
+  font-weight: lighter;
   font-size: 30px;
   opacity: 1;
   text-decoration: none;
@@ -2107,6 +2114,23 @@ Register/login page
   width: 247px;
   height: 78px;
   background: rgba(245,245,245,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border: 1px solid rgba(0,0,0,1);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+  transition: 0.35s;
+}
+
+.regbuttonrct:hover {
+  width: 247px;
+  height: 78px;
+  background: rgba(196,196,196,1);
   opacity: 1;
   position: relative;
   top: 0px;
@@ -2159,7 +2183,6 @@ Courses page
   top: 88px;
   left: 0px;
   overflow: hidden;
-  cursor: pointer;
 }
 .egcourseboxrct {
   width: 446px;
@@ -2179,7 +2202,7 @@ Courses page
   border-radius: 20px;
   transition: 0.35s;
 }
-.egcourseboxrct:hover {
+/*.egcourseboxrct:hover {
   width: 446px;
   height: 286px;
   background: rgba(221,221,221,1);
@@ -2195,7 +2218,7 @@ Courses page
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 20px;
-}
+}*/
 .egcourseboxicon {
   width: 175px;
   height: 175px;
@@ -2208,6 +2231,7 @@ Courses page
   top: 55px;
   left: 253px;
   overflow: hidden;
+  filter: grayscale();
 }
 .egcourseboxtitle {
   width: 219px;
@@ -2246,7 +2270,7 @@ Courses page
   text-align: left;
 }
 .egcourseboxtime {
-  width: 88px;
+  width: 207px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 240px;
@@ -2268,7 +2292,6 @@ Courses page
   top: 88px;
   left: 475px;
   overflow: hidden;
-  cursor: pointer;
 }
 .gcourseboxrct {
   width: 446px;
@@ -2288,7 +2311,7 @@ Courses page
   border-radius: 20px;
   transition: 0.35s;
 }
-.gcourseboxrct:hover {
+/*.gcourseboxrct:hover {
   width: 446px;
   height: 286px;
   background: rgba(221,221,221,1);
@@ -2304,7 +2327,7 @@ Courses page
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 20px;
-}
+}*/
 .gcourseboxicon {
   width: 170px;
   height: 170px;
@@ -2317,6 +2340,7 @@ Courses page
   top: 58px;
   left: 259px;
   overflow: hidden;
+  filter: grayscale();
 }
 .gcourseboxdur {
   width: 150px;
@@ -2331,7 +2355,7 @@ Courses page
   text-align: left;
 }
 .gcourseboxtime {
-  width: 88px;
+  width: 207px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 240px;
@@ -2488,7 +2512,6 @@ Courses page
   top: 403px;
   left: 0px;
   overflow: hidden;
-  cursor: pointer;
 }
 .egprocourserct {
   width: 446px;
@@ -2508,7 +2531,7 @@ Courses page
   border-radius: 20px;
   transition: 0.35s;
 }
-.egprocourserct:hover {
+/*.egprocourserct:hover {
   width: 446px;
   height: 286px;
   background: rgba(221,221,221,1);
@@ -2524,7 +2547,7 @@ Courses page
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 20px;
-}
+}*/
 .egprocourseicon {
   width: 175px;
   height: 175px;
@@ -2537,6 +2560,7 @@ Courses page
   top: 55px;
   left: 253px;
   overflow: hidden;
+  filter: grayscale();
 }
 .egprocoursetitle {
   width: 219px;
@@ -2575,7 +2599,7 @@ Courses page
   text-align: left;
 }
 .egprocoursetime {
-  width: 88px;
+  width: 207px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 240px;
@@ -2598,7 +2622,6 @@ Courses page
   top: 403px;
   left: 475px;
   overflow: hidden;
-  cursor: pointer;
 }
 .gprocourserct {
   width: 446px;
@@ -2618,7 +2641,7 @@ Courses page
   border-radius: 20px;
   transition: 0.35s;
 }
-.gprocourserct:hover {
+/*.gprocourserct:hover {
   width: 446px;
   height: 286px;
   background: rgba(221,221,221,1);
@@ -2634,7 +2657,7 @@ Courses page
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 20px;
-}
+}*/
 .gprocourseicon {
   width: 170px;
   height: 170px;
@@ -2647,6 +2670,7 @@ Courses page
   top: 58px;
   left: 259px;
   overflow: hidden;
+  filter: grayscale();
 }
 .gprocoursedur {
   width: 150px;
@@ -2661,7 +2685,7 @@ Courses page
   text-align: left;
 }
 .gprocoursetime {
-  width: 88px;
+  width: 207px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 240px;
@@ -2707,7 +2731,6 @@ Courses page
   top: 403px;
   left: 950px;
   overflow: hidden;
-  cursor: pointer;
 }
 .keysprocourserct {
   width: 446px;
@@ -2727,7 +2750,7 @@ Courses page
   border-radius: 20px;
   transition: 0.35s;
 }
-.keysprocourserct:hover {
+/*.keysprocourserct:hover {
   width: 446px;
   height: 286px;
   background: rgba(221,221,221,1);
@@ -2743,7 +2766,7 @@ Courses page
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 20px;
-}
+}*/
 .keysprocourseicon {
   width: 175px;
   height: 175px;
@@ -2756,6 +2779,7 @@ Courses page
   top: 55px;
   left: 253px;
   overflow: hidden;
+  filter: grayscale();
 }
 .keysprocoursedur {
   width: 150px;
@@ -2770,7 +2794,7 @@ Courses page
   text-align: left;
 }
 .keysprocoursetime {
-  width: 88px;
+  width: 207px;
   color: rgba(0,0,0,1);
   position: absolute;
   top: 240px;

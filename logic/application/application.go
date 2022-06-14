@@ -67,6 +67,7 @@ func (a app) Routes(r *httprouter.Router) {
 	r.GET("/closer", a.authorized(a.TabsCloserPage))
 	r.GET("/kukushka", a.authorized(a.TabsKukushkaPage))
 	r.GET("/lesnik", a.authorized(a.TabsLesnikPage))
+	r.GET("/animals", a.authorized(a.TabsAnimalsPage))
 	// </summary>
 	r.GET("/login", func(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		a.LoginPage(rw, "")
@@ -301,6 +302,20 @@ func (a app) TabsKukushkaPage(rw http.ResponseWriter, r *http.Request, p httprou
 		return
 	}
 	err = tmpl.ExecuteTemplate(rw, "kukushka", p)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+}
+
+func (a app) TabsAnimalsPage(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	lp := filepath.Join("public", "templates", "animals.html")
+	tmpl, err := template.ParseFiles(lp)
+	if err != nil {
+		http.Error(rw, err.Error(), http.StatusBadRequest)
+		return
+	}
+	err = tmpl.ExecuteTemplate(rw, "animals", p)
 	if err != nil {
 		http.Error(rw, err.Error(), http.StatusBadRequest)
 		return
