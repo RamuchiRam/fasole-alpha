@@ -499,7 +499,8 @@ body {
   overflow: hidden;
   cursor: pointer;
 }
-.gsbrct::before {
+
+.gsbrct {
   width: 286px;
   height: 78px;
   background: rgba(245,245,245,1);
@@ -514,23 +515,19 @@ body {
   border-bottom-right-radius: 20px;
   overflow: hidden;
   transition: 0.35s;
-  content: attr(text);
+  cursor: pointer;
 }
-.gsbrct:hover::before {
-  width: 286px;
-  height: 78px;
+
+.gsbrct:hover{
   background: rgba(196,196,196,1);
-  opacity: 1;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  border: 1px solid rgba(0,0,0,1);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  overflow: hidden;
-  content: attr(hover-text);
+}
+
+.gsbrct:hover::before {
+    content: "В разработке ;)";
+}
+
+.gsbrct:hover span {
+  display: none;
 }
 
 .gsbtxt {
@@ -1274,7 +1271,22 @@ body {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow: hidden;
+  cursor: pointer;
+  transition: 0.35s;
 }
+
+.fwcrct:hover{
+  background: rgba(196,196,196,1);
+}
+
+.fwcrct:hover::before{
+  content: "В разработке ;)";
+}
+
+.fwcrct:hover span{
+  display: none;
+}
+
 .fwctxt {
   width: 145px;
   color: rgba(0,0,0,1);
@@ -2041,6 +2053,11 @@ Register/login page
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   overflow: hidden;
+}
+
+.loginbutton:hover{
+  background: rgba(67,150,75,1);
+
 }
 .registerbuttontxt {
   width: 506px;
